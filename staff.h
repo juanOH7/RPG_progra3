@@ -5,7 +5,7 @@
 using std::string;
 
 class staff:public weapon{
-	string typeMagic;//Dark y Ligth
+	string typeMagic;//Dark y Light
 	double atkModifier;//Porcentaje 
 public:
 	staff(string, double, double, string, double);
