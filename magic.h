@@ -9,7 +9,7 @@ class magic
 	string typeMagic;
 	double baseAtk;
 public:
-	magic();
+	magic(string, string, double);
 	~magic();
 	string toString()const;
 	double getBaseAtk()const;

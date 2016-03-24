@@ -14,7 +14,7 @@ staff::~staff(){
 string staff::toString()const
 {
 	stringstream ss;
-	ss << staff::toString() << "," << typeMagic << "," << atkModifier << "%";
+	ss << staff::toString() << "," << typeMagic << "," << atkModifier;
 	return ss.str();
 }
 
@@ -24,7 +24,7 @@ double staff::atkBonus(double baseAtk)const
 	return baseAtk * bono;
 }
 
-double staff::atkDefault(double strength)const//si no tiene magia usa su fuerza de Character
+double staff::atkDefault(double strength, double defaultDa)const//si no tiene magia usa su fuerza de Character
 {
 	return defaultDa * ((strength * 0.60) + 1.00);
 }

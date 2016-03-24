@@ -1,10 +1,13 @@
 #pragma once
 #include <string>
 
+using std::string;
+
 class character{
 	string name;
-	int level;
+	int level, power;
 public:
-	character(string name,int level = 1);
+	character(string, int, int);
 	~character();
+	virtual string toString()const;
 };

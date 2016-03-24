@@ -11,14 +11,14 @@ melee::melee(string weapName, double durab,double defaultDa, string typeAtk): we
 melee::~melee(){
 }
 
-string melee::toString()
+string melee::toString()const
 {
 	stringstream ss;
 	ss << weapon::toString() << "," << typeAtk;
 	return ss.str();
 }
 
-double melee::atkBonus(double)const
+double melee::atkBonus(double strength, double defaultDa)const
 {
 	 return defaultDa * ((strength * 0.60) + 1.00);
 }

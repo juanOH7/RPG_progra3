@@ -5,7 +5,8 @@
 using std::string;
 using std::stringstream;
 
-weapon::weapon(string weapName, double durab, double defaultDam): weapName(weapName), durab(durab), defaultDam(defaultDam)s{}
+weapon::weapon(string weapName, double durab, double defaultDam): weapName(weapName), durab(durab), defaultDam(defaultDam){
+}
 
 weapon::~weapon(){
 }

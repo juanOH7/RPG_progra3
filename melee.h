@@ -10,5 +10,5 @@ public:
 	melee(string, double, double, string);
 	virtual~melee();
 	virtual string toString()const;
-	double atkBonus(double)const;
+	double atkBonus(double, double)const;
 };

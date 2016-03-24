@@ -1,11 +1,15 @@
 #include "character.h"
-#pragma once
 #include <string>
 #include <sstream>
 using std::string;
 using std::stringstream;
 
-Person::Person(string name, int level):name(name), level(level){
+character::character(string name, int power, int level):name(name), power(power), level(level){
 }
-Person::~Person(){
+character::~character(){
+}
+string character::toString()const{
+	stringstream ss;
+	ss << "Character: "<<name<<", "<<power<<", "<<level;
+	return ss.str();
 }
