@@ -4,12 +4,12 @@
 using std::string;
 using std::stringstream;
 
-character::character(string name, int power, int level):name(name), power(power), level(level){
+character::character(string name, int power, int level, double HP):name(name), power(power), level(level),HP(HP){
 }
 character::~character(){
 }
 string character::toString()const{
 	stringstream ss;
-	ss << "Character: "<<name<<", "<<power<<", "<<level;
+	ss << "Character: " << name << ", " << HP << ", " << power << ", " << level;
 	return ss.str();
 }

@@ -3,6 +3,7 @@
 using std::string;
 
 class weapon{
+protected:
 	string weapName;
 	double durab;//Durability
 	double defaultDam;

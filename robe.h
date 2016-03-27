@@ -4,13 +4,13 @@
 
 using std::string;
 
-class warrArmor:public armor
+class robe:public armor
 {
-	double defBonu;	
+	double atkBonu;	
 public:
-	warrArmor(string, double, double, double);
-	warrArmor();
-	~warrArmor();
+	robe(string, double, double, double);
+	robe();
+	~robe();
 	string toString()const;
 	double bono()const;
 	//Getters
