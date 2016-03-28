@@ -15,31 +15,28 @@ warrior::~warrior(){}
 
 string warrior::toString()const{
 	stringstream ss;
-	ss << character::toString();
+	ss << character::toString()<<", Tipo: Guerrero";
 	return ss.str();
 }
 
-double warrior::atk(melee arma)const
-{
+double warrior::atk(melee arma)const{
 	return arma.atkBonus(power);
 }
 
-void warrior::def(double AtkaDef,warrArmor armadura)
-{
+void warrior::def(double AtkaDef,warrArmor armadura){
 	double diff = armadura.bono() - AtkaDef;
-	if (diff < 0)
-	{
+	if (diff < 0){
 		HP -= diff;
 		armadura.defen(0);
 	}
-	else
-	{
+	else{
 		armadura.defen(armadura.defen() - AtkaDef);
 	}
 }
 
-void warrior::levelUP()
-{
-	HP = (((2*65+20+(252/4))*level)/100) + level + 10;
-	power = (  (  (  (2*65+20+(252/4) ) * level ) / 100 ) + 5);
+
+void warrior::levelUP(){
+	HP = (((2*400+41+(252/4))*level)/100) + level + 10;
+	power = (  (  (  (2*12+6+(252/4) ) * level ) / 100 ) + 5);
+	level++;
 }

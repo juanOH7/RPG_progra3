@@ -10,6 +10,16 @@ character::~character(){
 }
 string character::toString()const{
 	stringstream ss;
-	ss << "Character: " << name << ", " << HP << ", " << power << ", " << level;
+	ss <<"Nombre: "<< name <<", Puntos de Vida: "<< HP <<", Poder: "<< power << ", Nivel: "<< level;
 	return ss.str();
+}
+
+
+bool character::isDead(){
+	if (HP ==0)
+	{
+		return true;
+	}else{
+		return false;
+	}
 }

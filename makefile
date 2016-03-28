@@ -1,11 +1,14 @@
-main.exe: main.o character.o weapon.o armor.o warrior.o mage.o magic.o staff.o warrArmor.o melee.o robe.o
-	g++ main.o character.o weapon.o armor.o warrior.o mage.o magic.o staff.o warrArmor.o melee.o robe.o -o rpg 
+main.exe: main.o character.o weapon.o armor.o warrior.o mage.o magic.o staff.o warrArmor.o melee.o robe.o enemy.o
+	g++ main.o character.o weapon.o armor.o warrior.o mage.o magic.o staff.o warrArmor.o melee.o robe.o enemy.o -o rpg 
 	
-main.o:	main.cpp character.h weapon.h armor.h warrior.h mage.h magic.h staff.h warrArmor.h melee.h robe.h
+main.o:	main.cpp character.h weapon.h armor.h warrior.h mage.h magic.h staff.h warrArmor.h melee.h robe.h enemy.h
 	g++ -c main.cpp 
 
 character.o:	character.cpp character.h
 	g++ -c character.cpp 
+
+enemy.o:	enemy.h enemy.cpp character.h
+	g++ -c enemy.cpp
 
 weapon.o:	weapon.cpp weapon.h 
 	g++ -c weapon.cpp

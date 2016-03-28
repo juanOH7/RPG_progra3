@@ -12,7 +12,7 @@ using std::string;
 class mage:public character{
 	int intel;
  public:
- 	mage(string="name", int=0, int=0, int=0,double=0);
+ 	mage(string="name", int=1, int=1, int=1,double=1.0);
  	virtual ~mage();
  	virtual string toString()const;
  	double atk(staff, magic, robe)const;

@@ -13,4 +13,5 @@ public:
 	~character();
 	virtual string toString()const;
 	virtual void levelUP()=0;
+	virtual bool isDead();
 };

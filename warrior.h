@@ -10,7 +10,7 @@ using std::string;
 
 class warrior:public character{
  public:
- 	warrior(string, int, int,double);
+ 	warrior(string = "NameHere", int=20, int=1,double=1);
  	virtual ~warrior();
  	virtual string toString()const;
  	double atk(melee)const;
