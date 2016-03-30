@@ -13,5 +13,5 @@ class enemy:public character{
  	virtual string toString()const;
  	double atk(melee)const;
  	void defNPC(double);
- 	void levelUP(int);
+ 	void levelUP();
 };

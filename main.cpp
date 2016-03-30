@@ -38,17 +38,24 @@ int main(int argc, char const *argv[]){
 	string nombre = introNombre();
 	cout<<endl;
 	int tipo=introTipo(nombre);
+	warrior guerrero(nombre,1,50,30);
+	warrior masterGuerrero("Grayson",4,90,55);
+	mage mago(nombre,1,15,30,60);
+	mage masterMago("Alatar",6,15,30,60);//Light o Dark
 	do{
 		if (tipo==1){
-			melee a("WS0", 100, 3, "Slash");
-			warrior guerrero(nombre,1,50,30);
-			warrior masterGuerrero("Grayson",4,90,55);
 			cout<<"(Soy un guerrero, criado para matar, pupilo de Grayson. Puedo dormir ahora?) dices enojado."<<endl;
+			cout<<"(Grayson? El famoso guerrero que nos abandono y traiciono cuando mas lo necesitabamos? Ese Grayson?) Tu reaccionas sorprendido:" <<endl;
+			cout<<"(Traiciono? Que paso? No habia oido de el en años)."<<endl ;
+			cout<<"(Se han oido rumores de que Grayson se ha unido al Culto del Terror, pero no te preocupes, aunque el no es querido aqui, nadie sabra que fuiste su pupilo." << endl;
+			cout<<"Ten, aqui estan las llaves de tu habitacion; ve y descansa.)" << endl;
 			break;
 		}else if(tipo==2){
-			mage mago(nombre,1,15,30,60);
-			mage masterMago("Alatar",6,15,30,60);//Light o Dark
 			cout<<"(Soy un mago, experto en las artes magicas, pupilo de Alatar. Puedo dormir ahora?) dices enojado."<<endl;
+			cout<<"(Alatar? El famoso mago que nos abandono y traiciono cuando mas lo necesitabamos? Ese Alatar?) Tu reaccionas sorprendido:" <<endl;
+			cout<<"(Traiciono? Que paso? No habia oido de el en años). "<<endl;
+			cout<<"(Se han oido rumores de que Alatar se ha unido al Culto del Terror, pero no te preocupes, aunque el no es querido aqui, nadie sabra que fuiste su pupilo." <<endl;
+			cout<<"Ten, aqui estan las llaves de tu habitacion; ve y descansa.)" << endl;
 			break;
 		}else{
 			cout<<"(Eres malo para mentir, te conviene decirme la verdad, si quieres poder dormir.";
@@ -56,16 +63,85 @@ int main(int argc, char const *argv[]){
 			cin>>tipo;
 		}
 	}while(tipo!=1||tipo!=2);
+	vector <melee*> ListaArmas(5); 
+	vector <staff*> ListaStaffs(5); 
+	vector <magic*> ListaSpells(5); 
+	vector <robe*> ListaRobes(5); 
+	vector <warrArmor*> ListaArmors(5);
+	vector <enemy*> ListaEnemigos(5);	
+	bool seguirDungeon1 = true;
 	do
 	{
-		//string weapName, double durab,double defaultDam, string typeAtk
 		srand(time(NULL));
-		melee Default("Large Sword", 20, 20, "Slash");
-		if (tipo == 1){
-			
-		}else if(tipo == 2){
-			
-		}
+		cout <<"Te levantas, recuperado y con una mision. Estas decidido a buscar a tu maestro, cueste lo que cueste." <<endl;
+		cout <<"Al pagarle al dueño tu deuda, le preguntas si tiene alguna idea de donde fue el ultimo paradero de tu maestro."<<endl;
+		cout <<"El responde (Oi que estaba causando desastres en la Capilla del Tiempo, talvez hallas algo ahi). Le agradeces al dueño y te vas, decidido de lo que haras."<<endl;
+		cout << "-----------CAPILLA DEL TIEMPO-----------" << endl;
+		cout <<"La Capilla del Tiempo fue, en algun momento, un lugar pulcro, lejos de las reglas del mundo exterior. El tiempo aqui se mueve el doble de lento que en el resto del mundo"<< endl;
+		cout <<"y mucha gente lo quiso usar para mantener su belleza. Ahora, es un desastre, toda su belleza ha sido reemplazada por oscuridad y monstruos." <<endl;
+		cout <<"(EL Culto del Terror estuvo aqui, debo pasar por aqui y matar a todos los monstruos para reestablecer la belleza aqui). Con eso en mente, entras a la Capilla."<<endl;
+		while (seguirDungeon1)
+		{
+			string seguir = "Y";
+			bool ganarEXp;
+			int Enemigo = 0;
+			double numEn = rand()%3+1;
+			int posArmSel, posArmaSel;	
+			enemy antagonist("Eskeleto", 5, 2, 70);
+			*ListaEnemigos[0] = antagonist;
+			cout << "Te Enfrentas a " << numEn << "Eskeletos!!" <<endl;
+			if (tipo == 1)
+			{
+				melee arma1("Axe", 23, 60, "Slash");
+				*ListaArmas[0] = arma1;
+				melee arma2("Katana", 12, 50, "Slash");
+				*ListaArmas[1] = arma2;
+				melee arma3("Broadsword", 20, 50, "Slash");
+				*ListaArmas[2] = arma3;
+				melee arma4("War Hammer", 50, 80, "Blunt");
+				*ListaArmas[3] = arma4;
+				melee arma5("Mace", 55, 90, "Blunt");
+				*ListaArmas[4] = arma5;
+				warrArmor set1("RingArmor", 120,40, 4);
+				*ListaArmors[0] = set1;
+				warrArmor set2("ThornArmor", 140, 60, 2);
+				*ListaArmors[1] = set2;
+				warrArmor set3("MightyArmor", 260, 60, 8);
+				*ListaArmors[2] = set3;
+				warrArmor set4("Savagermor", 90, 60, 5);
+				*ListaArmors[3] = set4;
+				warrArmor set5("SunArmor", 250, 60, 7);
+				*ListaArmors[4] = set5;
+				cout << "Seleccione Arma:"<<endl;
+				do
+				{
+					for (int i = 0; i <  ListaArmas.size(); ++i)
+					{
+						cout << i+1 << ":" << ListaArmas[i]->toString() << endl;
+					}
+					cin >> posArmaSel;
+					for (int i = 0; i <  ListaArmors.size(); ++i)
+					{
+						cout << i+1 << ":" << ListaArmors[i]->toString() << endl;
+					}
+					cin >> posArmSel;
+					ganarEXp = combateWarrior(guerrero, *ListaArmas[posArmaSel-1],*ListaArmas[0], *ListaArmors[posArmSel - 1], *ListaEnemigos[Enemigo]);
+					if (ganarEXp)
+					{
+						guerrero.levelUP();
+						Enemigo++;
+					}else{
+						seguir = "n";
+						break;
+					}
+					cout << "Continuar [Y/N]";
+					cin >> seguir;
+				} while (seguir == "Y" || seguir == "y");
+			}
+			else if (tipo == 2)
+			{
+			}
+		} 
 	} while (terminoJUego);
 	return 0;
 }

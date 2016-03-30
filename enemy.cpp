@@ -25,7 +25,7 @@ void enemy::defNPC(double AtkaDef){
 	HP -= AtkaDef;
 }
 
-void enemy::levelUP(int level1){
-	HP = (((2*90+20+(252/4))*level1)/100) + level1 + 10;
-	power = (  (  (  (2*12+6+(252/4) ) * level1 ) / 100 ) + 5);
+void enemy::levelUP(){
+	HP = (((2*90+20+(252/4))*level)/100) + level + 10;
+	power = (  (  (  (2*12+6+(252/4) ) * level ) / 100 ) + 5);
 }
