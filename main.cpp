@@ -69,21 +69,24 @@ int main(int argc, char const *argv[]){
 	bool seguirDungeon2 = true;
 	bool seguirDungeon3 = true;
 	do{
+		int numDung = 1;
 		capillaTiempo();
-		int numEn=rand()%4+2, numDung = 1;
 		while (seguirDungeon1){
+			int numEn=rand()%4+2;
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon1, numEn);
 		}
 		numDung = 2;
 		panteonPoder();
 		while (seguirDungeon2)
 		{
+			int numEn=rand()%4+2;
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon2, numEn);
 		}
 		numDung = 3;
 		sanctoRemordimiento();
 		while (seguirDungeon3)
 		{
+			int numEn=rand()%4+2;
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon3, numEn);
 		}
 		terminoJUego = false; 
@@ -182,7 +185,7 @@ int menuTunica(){
 	cout<<"3. Del Poder"<<endl;
 	cout<<"4. Salvaje"<<endl;
 	cout<<"5. Reforzado"<<endl;
-	cout<<"Seleccione su baston: ";
+	cout<<"Seleccione su Túnica: ";
 	cin>>opc;
 	if (opc<1||opc>5){
 		return -1;
@@ -212,7 +215,7 @@ int menuMagia(){
 	cout<<"3. Confusion"<<endl;
 	cout<<"4. Maldicion"<<endl;
 	cout<<"5. Multiplicacion"<<endl;
-	cout<<"Seleccione su baston: ";
+	cout<<"Seleccione su Magia ";
 	cin>>opc;
 	if (opc<1||opc>5){
 		return -1;
@@ -262,7 +265,7 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 	magic magia;
 	if (numDung == 1)
 	{
-		cout << "Te Enfrentas a "<<numEn<<" Eskeletos!!" <<endl;
+		cout << "Te Enfrentas a "<<numEn<<" Esqueletos!!" <<endl;
 
 	}else if(numDung == 2)
 	{
@@ -378,24 +381,33 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 			}
 		}while(seleccionarArma!=1&&seleccionarArma!=2&&seleccionarArma!=3&&seleccionarArma!=4&&seleccionarArma!=5);
 		do{
-			bool ganarEXp=true;
+			double Damage = Usuario1.atk(arma);
+			cout << "Haces Daño de: "<<Damage << " a  tu Enemigo"<<endl;
+			Damage = antagonist.atk(armaEnemigo);
+			cout << "Recibes un daño de:" << Damage << endl;
+			if (!antagonist.isDead())
+			{
+				cout << "Sobrevives el ataque" <<endl;	
+			}
 			ganarEXp = combateWarrior(Usuario1, arma, armaEnemigo, armadura, antagonist);
 			if (ganarEXp){
 				if (numDung == 1)
 				{
 					antagonist.setName("Esqueleto");
-					antagonist.setHP(100);
+					antagonist.setHP(1000);
 				}else if(numDung == 2)
 				{
 					antagonist.setName("Caballero");
-					antagonist.setHP(300);					
+					antagonist.setHP(3000);					
 				}else if(numDung == 3)
 				{
 					antagonist.setName("Ogro");
-					antagonist.setHP(400);
+					antagonist.setHP(4000);
 				}
 				cout << "Has vencido a tu Enemigo" <<endl;
 				Usuario1.levelUP();
+				cout << "Level UP" << endl;
+				cout << Usuario1.toString() << endl;
 				numEn--;
 			}else{
 				break;
@@ -453,7 +465,7 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 				baston.setDurab(23);
 				baston.setDmg(60);
 				baston.setType("Light");
-				baston.setDmgMod(25);
+				baston.setDmgMod(2);
 				cout<<"Agarras el baston tecnologico, y te preparas para luchar."<<endl;
 				armaEnemigo.setName("Katana");
 				armaEnemigo.setDurab(6);
@@ -463,9 +475,9 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 			}else if (seleccionarBaston==2){
 				baston.setName("Elemental");
 				baston.setDurab(12);
-				baston.setDmg(50);
+				baston.setDmg(25);
 				baston.setType("Light");
-				baston.setDmgMod(15);
+				baston.setDmgMod(25);
 				cout<<"Agarras la baston elemental, y te preparas para luchar."<<endl;
 				armaEnemigo.setName("Broadsword");
 				armaEnemigo.setDurab(10);
@@ -475,9 +487,9 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 			}else if (seleccionarBaston==3){
 				baston.setName("Force");
 				baston.setDurab(20);
-				baston.setDmg(50);
+				baston.setDmg(25);
 				baston.setType("Dark");
-				baston.setDmgMod(15);
+				baston.setDmgMod(25);
 				cout<<"Agarras el baston de la fuerza, y te preparas para luchar."<<endl;
 				armaEnemigo.setName("War Hammer");
 				armaEnemigo.setDurab(15);
@@ -486,8 +498,8 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 				break;
 			}else if (seleccionarBaston==4){
 				baston.setName("Ferocious");
-				baston.setDurab(50);
-				baston.setDmg(80);
+				baston.setDurab(25);
+				baston.setDmg(25);
 				baston.setType("Dark");
 				baston.setDmgMod(30);
 				cout<<"Agarras el martillo, y te preparas para luchar."<<endl;
@@ -551,10 +563,20 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 			}
 		}while(seleccionarMagia!=1&&seleccionarMagia!=2&&seleccionarMagia!=3&&seleccionarMagia!=4&&seleccionarMagia!=5);
 		do{
+			double Damage = Usuario2.atk(baston,magia,tunica);
+			cout << "Haces Daño de: "<<Damage << " a  tu Enemigo"<<endl;
+			Damage = antagonist.atk(armaEnemigo);
+			cout << "Recibes un daño de:" << Damage << endl;
+			if (!antagonist.isDead())
+			{
+				cout << "Sobrevives el ataque" <<endl;	
+			}
 			ganarEXp = combateMage(Usuario2, baston, armaEnemigo, tunica,magia, antagonist);
 			if (ganarEXp){
 				Usuario2.levelUP();
 				cout << "has vencido a tu Enemigo!" << endl;
+				cout << "Level UP" << endl;
+				cout << Usuario2.toString() << endl;
 				numEn--;
 				if (numDung == 1)
 				{
