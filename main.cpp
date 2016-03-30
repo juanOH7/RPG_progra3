@@ -31,6 +31,8 @@ int menuArma();
 int menuTunica();
 int menuBaston();
 int menuMagia();
+void panteonPoder();
+void sanctoRemordimiento();
 
 int main(int argc, char const *argv[]){
 	bool terminoJUego = true;
@@ -73,11 +75,13 @@ int main(int argc, char const *argv[]){
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon1, numEn);
 		}
 		numDung = 2;
+		panteonPoder();
 		while (seguirDungeon2)
 		{
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon2, numEn);
 		}
 		numDung = 3;
+		sanctoRemordimiento();
 		while (seguirDungeon3)
 		{
 			dungeon(guerrero, mago,numDung, tipo, seguirDungeon3, numEn);
@@ -571,4 +575,15 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 		}while (numEn > 0);
 		seguirDungeon = false;	
 	}
+}
+void panteonPoder(){
+	cout<<"Al salir, ves pizadas en el suelo, que llevan hacia un solo lugar, el Panteon del Poder"<<endl;
+	cout<<"PANTEON DEL PODER"<<endl;
+	cout<<"El Panteon del Poder poseia viejas reliquias, armas y libros sobre magia, usados por leyendas en tiempo pasados. Ahora, esta vacia."<<endl; 
+	cout<<"Es obvio que el Culto ha pasado por aqui, ya que hay mas monstruos, y hay que eliminarlos para poder empezar la restauracion del lugar."<<endl;
+}
+void sanctoRemordimiento(){
+	cout<<"SANCTO DE REMORDIMIENTO"<<endl;
+	cout<<"(No quiero estar aqui...), el Sancto de Remordimiento es famoso por la leyenda de que al entrar, enfrentas a tus monstruos internos."<<endl; 
+	cout<<"Dada tu experiencia pasada en estos lugares, sabes que esos monstruos fueron colocados aqui por el Culto de Terror. Hora de pelear!"<<endl;
 }
