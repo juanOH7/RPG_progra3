@@ -5,8 +5,10 @@
 #include "weapon.h"
 #include "melee.h"
 #include <string>
+#include <iostream>
 #include <sstream>
 using std::string;
+using std::cout;
 using std::stringstream;
 
 warrior::warrior(string name, int power, int level, double HP):character(name, power, level,HP){}
@@ -25,12 +27,21 @@ double warrior::atk(melee arma)const{
 
 void warrior::def(double AtkaDef,warrArmor& armadura){
 	double diff = armadura.bono() - AtkaDef;
+	cout << armadura.bono() << "\n";
+	cout << AtkaDef << "\n";
 	if (diff < 0){
+		cout << diff << "\n";
 		HP += diff;
-		armadura.setDefen(0);
+		cout << "menos Health" << "\n";
+		cout << HP<< "\n";
+		armadura.setdefen(0);
 	}
 	else{
-		armadura.setDefen(armadura.getDefen() - AtkaDef);
+		cout << armadura.getdefen() << "\n";
+		double nueveDef = armadura.bono() - AtkaDef;
+		armadura.setdefen(nueveDef);
+		cout << armadura.getdefen() << "\n";
+
 	}
 }
 

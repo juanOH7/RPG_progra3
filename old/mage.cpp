@@ -34,10 +34,10 @@ void mage::def(double incoming,robe& wearing){
 	double diff = wearing.bono() - incoming;
 	if (diff < 0){
 		HP -= diff;
-		wearing.setDefen(0);
+		wearing.defen(0);
 	}
 	else{
-		wearing.setDefen(wearing.getDefen() - incoming);
+		wearing.defen(wearing.defen() - incoming);
 	}
 }
 

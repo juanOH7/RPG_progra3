@@ -22,9 +22,10 @@ using std::string;
 using std::vector;
 bool combateWarrior(warrior&, melee, melee,warrArmor& ,enemy&);
 bool combateMage(mage&, staff, melee,robe&,magic ,enemy&);
+void dungeon(warrior& ,mage& ,int , int , bool&, int );
 string introNombre();
 int introTipo(string nombre);
-void capillaTiempo;
+void capillaTiempo();
 int menuArmadura();
 int menuArma();
 int menuTunica();
@@ -63,314 +64,25 @@ int main(int argc, char const *argv[]){
 		}
 	}while(tipo!=1||tipo!=2);
 	bool seguirDungeon1 = true;
+	bool seguirDungeon2 = true;
+	bool seguirDungeon3 = true;
 	do{
 		capillaTiempo();
-		int numEn=rand()%4+1;
+		int numEn=rand()%4+2, numDung = 1;
 		while (seguirDungeon1){
-			string seguir = "Y";
-			bool ganarEXp;
-			enemy antagonist("Eskeleto", 5, 2, 70);
-			warrArmor armadura;
-			melee arma, armaEnemigo;
-			robe tunica;
-			staff baston;
-			magic magia;
-			cout << "Te Enfrentas a "<<numEn<<" Eskeletos!!" <<endl;
-			if (tipo == 1){
-				int seleccionarArmadura=menuArmadura();
-				do{
-					if (seleccionarArmadura==1){
-						armadura.setName("RingArmor");
-						armadura.setDefen(120);
-						armadura.setDurab(40);
-						armadura.setBon(4);
-						cout<<"Agarras la armadura del anillo, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarArmadura==2){
-						armadura.setName("ThornArmor");
-						armadura.setDefen(140);
-						armadura.setDurab(60);
-						armadura.setBon(2);
-						cout<<"Agarras la armadura de espinas, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarArmadura==3){
-						armadura.setName("MightyArmor");
-						armadura.setDefen(260);
-						armadura.setDurab(60);
-						armadura.setBon(8);
-						cout<<"Agarras la armadura del poder, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarArmadura==4){
-						armadura.setName("Savagermor");
-						armadura.setDefen(90);
-						armadura.setDurab(60);
-						armadura.setBon(5);
-						cout<<"Agarras la armadura salvaje, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarArmadura==5){
-						armadura.setName("SunArmor");
-						armadura.setDefen(250);
-						armadura.setDurab(60);
-						armadura.setBon(7);
-						cout<<"Agarras la armadura solar, y te sientes protegido."<<endl;
-						break;
-					}else{
-						cout<<"Opcion Invalida"<<endl;
-						seleccionarArmadura=menuArmadura();
-					}
-				}while(seleccionarArmadura!=1&&seleccionarArmadura!=2&&seleccionarArmadura!=3&&seleccionarArmadura!=4&&seleccionarArmadura!=5);
-				int seleccionarArma=menuArma();
-				do{
-					if (seleccionarArma==1){
-						arma.setName("Axe");
-						arma.setDurab(23);
-						arma.setDmg(60);
-						arma.setType("Slash");
-						cout<<"Agarras el hacha, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Katana");
-						armaEnemigo.setDurab(6);
-						armaEnemigo.setDmg(15);
-						armaEnemigo.setType("Slash");
-						break;
-					}else if (seleccionarArma==2){
-						arma.setName("Katana");
-						arma.setDurab(12);
-						arma.setDmg(50);
-						arma.setType("Slash");
-						cout<<"Agarras la katana, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Broadsword");
-						armaEnemigo.setDurab(10);
-						armaEnemigo.setDmg(15);
-						armaEnemigo.setType("Slash");
-						break;
-					}else if (seleccionarArma==3){
-						arma.setName("Broadsword");
-						arma.setDurab(20);
-						arma.setDmg(50);
-						arma.setType("Slash");
-						cout<<"Agarras el sable, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("War Hammer");
-						armaEnemigo.setDurab(15);
-						armaEnemigo.setDmg(30);
-						armaEnemigo.setType("Blunt");
-						break;
-					}else if (seleccionarArma==4){
-						arma.setName("War Hammer");
-						arma.setDurab(50);
-						arma.setDmg(80);
-						arma.setType("Blunt");
-						cout<<"Agarras el martillo, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Mace");
-						armaEnemigo.setDurab(25);
-						armaEnemigo.setDmg(45);
-						armaEnemigo.setType("Blunt");
-						break;
-					}else if (seleccionarArma==5){
-						arma.setName("Mace");
-						arma.setDurab(55);
-						arma.setDmg(90);
-						arma.setType("Blunt");
-						cout<<"Agarras el mazo, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Axe");
-						armaEnemigo.setDurab(12);
-						armaEnemigo.setDmg(35);
-						armaEnemigo.setType("Slash");
-						break;
-					}else{
-						cout<<"Opcion Invalida"<<endl;
-						seleccionarArma=menuArma();
-					}
-				}while(seleccionarArma!=1&&seleccionarArma!=2&&seleccionarArma!=3&&seleccionarArma!=4&&seleccionarArma!=5);
-				do{
-					bool ganarEXp=true;
-					//ganarEXp = combateWarrior(guerrero, arma, armaEnemigo, armadura, antagonist);
-					if (ganarEXp){
-						guerrero.levelUP();
-						enemigo++;
-						numEn--;
-						enemy antagonist("Eskeleto", 5, 2, 70);
-					}else{
-						seguir = "n";
-						break;
-					}
-					if(numEn==0){
-						seguir = "n";
-						seguirDungeon1=false;
-						break;
-					}else{
-						cout << "Continuar [Y/N]: ";
-						cin >> seguir;
-					}
-				}while (seguir == "Y" || seguir == "y");
-			}
-			else if (tipo == 2){
-				int seleccionarTunica=menuTunica();
-				do{
-					if (seleccionarTunica==1){
-						tunica.setName("Enchanted");
-						tunica.setDefen(120);
-						tunica.setDurab(40);
-						tunica.setBon(4);
-						cout<<"Agarras la tunica encantada, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarTunica==2){
-						tunica.setName("Embellished");
-						tunica.setDefen(140);
-						tunica.setDurab(60);
-						tunica.setBon(2);
-						cout<<"Agarras la tunica adornada, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarTunica==3){
-						tunica.setName("Power");
-						tunica.setDefen(230);
-						tunica.setDurab(60);
-						tunica.setBon(8);
-						cout<<"Agarras la tunica del poder, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarTunica==4){
-						tunica.setName("Savage");
-						tunica.setDefen(90);
-						tunica.setDurab(60);
-						tunica.setBon(5);
-						cout<<"Agarras la tunica salvaje, y te sientes protegido."<<endl;
-						break;
-					}else if (seleccionarTunica==5){
-						tunica.setName("Reinforced");
-						tunica.setDefen(250);
-						tunica.setDurab(60);
-						tunica.setBon(7);
-						cout<<"Agarras la tunica reforzada, y te sientes protegido."<<endl;
-						break;
-					}else{
-						cout<<"Opcion Invalida"<<endl;
-						seleccionarTunica=menuTunica();
-					}
-				}while(seleccionarTunica!=1&&seleccionarTunica!=2&&seleccionarTunica!=3&&seleccionarTunica!=4&&seleccionarTunica!=5);
-				int seleccionarBaston=menuBaston();
-				do{
-					if (seleccionarBaston==1){
-						baston.setName("Technology");
-						baston.setDurab(23);
-						baston.setDmg(60);
-						baston.setType("Light");
-						baston.setDmgMod(25);
-						cout<<"Agarras el baston tecnologico, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Katana");
-						armaEnemigo.setDurab(6);
-						armaEnemigo.setDmg(15);
-						armaEnemigo.setType("Slash");
-						break;
-					}else if (seleccionarBaston==2){
-						baston.setName("Elemental");
-						baston.setDurab(12);
-						baston.setDmg(50);
-						baston.setType("Light");
-						baston.setDmgMod(15);
-						cout<<"Agarras la baston elemental, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Broadsword");
-						armaEnemigo.setDurab(10);
-						armaEnemigo.setDmg(15);
-						armaEnemigo.setType("Slash");
-						break;
-					}else if (seleccionarBaston==3){
-						baston.setName("Force");
-						baston.setDurab(20);
-						baston.setDmg(50);
-						baston.setType("Dark");
-						baston.setDmgMod(15);
-						cout<<"Agarras el baston de la fuerza, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("War Hammer");
-						armaEnemigo.setDurab(15);
-						armaEnemigo.setDmg(30);
-						armaEnemigo.setType("Blunt");
-						break;
-					}else if (seleccionarBaston==4){
-						baston.setName("Ferocious");
-						baston.setDurab(50);
-						baston.setDmg(80);
-						baston.setType("Dark");
-						baston.setDmgMod(30);
-						cout<<"Agarras el martillo, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Mace");
-						armaEnemigo.setDurab(25);
-						armaEnemigo.setDmg(45);
-						armaEnemigo.setType("Blunt");
-						break;
-					}else if (seleccionarBaston==5){
-						baston.setName("Reinforced");
-						baston.setDurab(55);
-						baston.setDmg(90);
-						baston.setType("Light");
-						baston.setDmgMod(35);
-						cout<<"Agarras el mazo, y te preparas para luchar."<<endl;
-						armaEnemigo.setName("Axe");
-						armaEnemigo.setDurab(12);
-						armaEnemigo.setDmg(35);
-						armaEnemigo.setType("Slash");
-						break;
-					}else{
-						cout<<"Opcion Invalida"<<endl;
-						seleccionarBaston=menuBaston();
-					}
-				}while(seleccionarBaston!=1&&seleccionarBaston!=2&&seleccionarBaston!=3&&seleccionarBaston!=4&&seleccionarBaston!=5);
-				int seleccionarMagia=menuMagia();
-				do{
-					if (seleccionarMagia==1){
-						magia.setSpellName("Fire");
-						magia.setTypeMagic("Light");
-						magia.setBaseAtk(80);
-						cout<<"Te preparas con la magia de fuego, es hora de luchar!."<<endl;
-						break;
-					}else if (seleccionarMagia==2){
-						magia.setSpellName("Strength");
-						magia.setTypeMagic("Light");
-						magia.setBaseAtk(100);
-						cout<<"Te preparas con la magia de fuerza, es hora de luchar!."<<endl;
-						break;
-					}else if (seleccionarMagia==3){
-						magia.setSpellName("Confusion");
-						magia.setTypeMagic("Dark");
-						magia.setBaseAtk(40);
-						cout<<"Te preparas con la magia de confusion, es hora de luchar!."<<endl;
-						break;
-					}else if (seleccionarMagia==4){
-						magia.setSpellName("Curse");
-						magia.setTypeMagic("Dark");
-						magia.setBaseAtk(70);
-						cout<<"Te preparas con la magia de maldicion, es hora de luchar!."<<endl;
-						break;
-					}else if (seleccionarMagia==5){
-						magia.setSpellName("Multiplication");
-						magia.setTypeMagic("Light");
-						magia.setBaseAtk(90);
-						cout<<"Te preparas con la magia de multiplicacion, es hora de luchar!."<<endl;
-						break;
-					}else{
-						cout<<"Opcion Invalida"<<endl;
-						seleccionarMagia=menuMagia();
-					}
-				}while(seleccionarMagia!=1&&seleccionarMagia!=2&&seleccionarMagia!=3&&seleccionarMagia!=4&&seleccionarMagia!=5);
-				do{
-					ganarEXp = combateMage(mago, baston, armaEnemigo, tunica,magia, antagonist);
-					if (ganarEXp){
-						mago.levelUP();
-						numEn--;
-						enemy antagonist("Eskeleto", 5, 2, 70);
-					}else{
-						seguir = "n";
-						break;
-					}
-					if(numEn==0){
-						seguir = "n";
-						seguirDungeon1=false;
-						break;
-					}else{
-						cout << "Continuar [Y/N]: ";
-						cin >> seguir;
-					}
-				}while (seguir == "Y" || seguir == "y");
-			}
-		} 
+			dungeon(guerrero, mago,numDung, tipo, seguirDungeon1, numEn);
+		}
+		numDung = 2;
+		while (seguirDungeon2)
+		{
+			dungeon(guerrero, mago,numDung, tipo, seguirDungeon2, numEn);
+		}
+		numDung = 3;
+		while (seguirDungeon3)
+		{
+			dungeon(guerrero, mago,numDung, tipo, seguirDungeon3, numEn);
+		}
+		terminoJUego = false; 
 	} while (terminoJUego);
 	return 0;
 }
@@ -514,4 +226,349 @@ void capillaTiempo(){
 	cout <<"y mucha gente lo quiso usar para mantener su belleza. Ahora, es un desastre, toda su belleza ha sido reemplazada por oscuridad y monstruos." <<endl;
 	cout <<"(EL Culto del Terror estuvo aqui, debo pasar por aqui y matar a todos los monstruos para reestablecer la belleza aqui). Con eso en mente, entras a la Capilla."<<endl;
 	cout << endl;
+}
+
+void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& seguirDungeon, int numEn)
+{
+	bool ganarEXp;
+	enemy antagonist;
+	if (numDung == 1)
+	{
+		antagonist.setName("Esqueleto");
+		antagonist.setForce(5);
+		antagonist.setLevel(5);
+		antagonist.setHP(100);
+	}else if(numDung == 2)
+	{
+		antagonist.setName("Caballero");
+		antagonist.setForce(5);
+		antagonist.setLevel(5);
+		antagonist.setHP(200);
+	}else if(numDung == 3)
+	{
+		antagonist.setName("Ogro");
+		antagonist.setForce(5);
+		antagonist.setLevel(5);
+		antagonist.setHP(400);
+	}
+	warrArmor armadura;
+	melee arma, armaEnemigo;
+	robe tunica;
+	staff baston(0);
+	magic magia;
+	if (numDung == 1)
+	{
+		cout << "Te Enfrentas a "<<numEn<<" Eskeletos!!" <<endl;
+
+	}else if(numDung == 2)
+	{
+		cout << "Te Enfrentas a "<<numEn<<" Caballeros!!" <<endl;
+
+	}else if(numDung == 3)
+	{
+		cout << "Te Enfrentas a "<<numEn<<" Ogros!!" <<endl;
+	}
+	if (tipo == 1){
+		int seleccionarArmadura=menuArmadura();
+		do{
+			if (seleccionarArmadura==1){
+				armadura.setName("RingArmor");
+				armadura.setDefen(120);
+				armadura.setDurab(40);
+				armadura.setBon(4);
+				cout<<"Agarras la armadura del anillo, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarArmadura==2){
+				armadura.setName("ThornArmor");
+				armadura.setDefen(140);
+				armadura.setDurab(60);
+				armadura.setBon(2);
+				cout<<"Agarras la armadura de espinas, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarArmadura==3){
+				armadura.setName("MightyArmor");
+				armadura.setDefen(260);
+				armadura.setDurab(60);
+				armadura.setBon(8);
+				cout<<"Agarras la armadura del poder, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarArmadura==4){
+				armadura.setName("Savagermor");
+				armadura.setDefen(90);
+				armadura.setDurab(60);
+				armadura.setBon(5);
+				cout<<"Agarras la armadura salvaje, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarArmadura==5){
+				armadura.setName("SunArmor");
+				armadura.setDefen(250);
+				armadura.setDurab(60);
+				armadura.setBon(7);
+				cout<<"Agarras la armadura solar, y te sientes protegido."<<endl;
+				break;
+			}else{
+				cout<<"Opcion Invalida"<<endl;
+				seleccionarArmadura=menuArmadura();
+			}
+		}while(seleccionarArmadura!=1&&seleccionarArmadura!=2&&seleccionarArmadura!=3&&seleccionarArmadura!=4&&seleccionarArmadura!=5);
+		int seleccionarArma=menuArma();
+		do{
+			if (seleccionarArma==1){
+				arma.setName("Axe");
+				arma.setDurab(23);
+				arma.setDmg(60);
+				arma.setType("Slash");
+				cout<<"Agarras el hacha, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Katana");
+				armaEnemigo.setDurab(6);
+				armaEnemigo.setDmg(15);
+				armaEnemigo.setType("Slash");
+				break;
+			}else if (seleccionarArma==2){
+				arma.setName("Katana");
+				arma.setDurab(12);
+				arma.setDmg(50);
+				arma.setType("Slash");
+				cout<<"Agarras la katana, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Broadsword");
+				armaEnemigo.setDurab(10);
+				armaEnemigo.setDmg(15);
+				armaEnemigo.setType("Slash");
+				break;
+			}else if (seleccionarArma==3){
+				arma.setName("Broadsword");
+				arma.setDurab(20);
+				arma.setDmg(50);
+				arma.setType("Slash");
+				cout<<"Agarras el sable, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("War Hammer");
+				armaEnemigo.setDurab(15);
+				armaEnemigo.setDmg(30);
+				armaEnemigo.setType("Blunt");
+				break;
+			}else if (seleccionarArma==4){
+				arma.setName("War Hammer");
+				arma.setDurab(50);
+				arma.setDmg(80);
+				arma.setType("Blunt");
+				cout<<"Agarras el martillo, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Mace");
+				armaEnemigo.setDurab(25);
+				armaEnemigo.setDmg(45);
+				armaEnemigo.setType("Blunt");
+				break;
+			}else if (seleccionarArma==5){
+				arma.setName("Mace");
+				arma.setDurab(55);
+				arma.setDmg(90);
+				arma.setType("Blunt");
+				cout<<"Agarras el mazo, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Axe");
+				armaEnemigo.setDurab(12);
+				armaEnemigo.setDmg(35);
+				armaEnemigo.setType("Slash");
+				break;
+			}else{
+				cout<<"Opcion Invalida"<<endl;
+				seleccionarArma=menuArma();
+			}
+		}while(seleccionarArma!=1&&seleccionarArma!=2&&seleccionarArma!=3&&seleccionarArma!=4&&seleccionarArma!=5);
+		do{
+			bool ganarEXp=true;
+			ganarEXp = combateWarrior(Usuario1, arma, armaEnemigo, armadura, antagonist);
+			if (ganarEXp){
+				if (numDung == 1)
+				{
+					antagonist.setName("Esqueleto");
+					antagonist.setHP(100);
+				}else if(numDung == 2)
+				{
+					antagonist.setName("Caballero");
+					antagonist.setHP(300);					
+				}else if(numDung == 3)
+				{
+					antagonist.setName("Ogro");
+					antagonist.setHP(400);
+				}
+				cout << "Has vencido a tu Enemigo" <<endl;
+				Usuario1.levelUP();
+				numEn--;
+			}else{
+				break;
+			}
+		}while (numEn > 0 );
+		seguirDungeon = false;
+	}
+	else if (tipo == 2){
+		int seleccionarTunica=menuTunica();
+		do{
+			if (seleccionarTunica==1){
+				tunica.setName("Enchanted");
+				tunica.setDefen(120);
+				tunica.setDurab(40);
+				tunica.setBon(4);
+				cout<<"Agarras la tunica encantada, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarTunica==2){
+				tunica.setName("Embellished");
+				tunica.setDefen(140);
+				tunica.setDurab(60);
+				tunica.setBon(2);
+				cout<<"Agarras la tunica adornada, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarTunica==3){
+				tunica.setName("Power");
+				tunica.setDefen(230);
+				tunica.setDurab(60);
+				tunica.setBon(8);
+				cout<<"Agarras la tunica del poder, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarTunica==4){
+				tunica.setName("Savage");
+				tunica.setDefen(90);
+				tunica.setDurab(60);
+				tunica.setBon(5);
+				cout<<"Agarras la tunica salvaje, y te sientes protegido."<<endl;
+				break;
+			}else if (seleccionarTunica==5){
+				tunica.setName("Reinforced");
+				tunica.setDefen(250);
+				tunica.setDurab(60);
+				tunica.setBon(7);
+				cout<<"Agarras la tunica reforzada, y te sientes protegido."<<endl;
+				break;
+			}else{
+				cout<<"Opcion Invalida"<<endl;
+				seleccionarTunica=menuTunica();
+			}
+		}while(seleccionarTunica!=1&&seleccionarTunica!=2&&seleccionarTunica!=3&&seleccionarTunica!=4&&seleccionarTunica!=5);
+		int seleccionarBaston=menuBaston();
+		do{
+			if (seleccionarBaston==1){
+				baston.setName("Technology");
+				baston.setDurab(23);
+				baston.setDmg(60);
+				baston.setType("Light");
+				baston.setDmgMod(25);
+				cout<<"Agarras el baston tecnologico, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Katana");
+				armaEnemigo.setDurab(6);
+				armaEnemigo.setDmg(15);
+				armaEnemigo.setType("Slash");
+				break;
+			}else if (seleccionarBaston==2){
+				baston.setName("Elemental");
+				baston.setDurab(12);
+				baston.setDmg(50);
+				baston.setType("Light");
+				baston.setDmgMod(15);
+				cout<<"Agarras la baston elemental, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Broadsword");
+				armaEnemigo.setDurab(10);
+				armaEnemigo.setDmg(15);
+				armaEnemigo.setType("Slash");
+				break;
+			}else if (seleccionarBaston==3){
+				baston.setName("Force");
+				baston.setDurab(20);
+				baston.setDmg(50);
+				baston.setType("Dark");
+				baston.setDmgMod(15);
+				cout<<"Agarras el baston de la fuerza, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("War Hammer");
+				armaEnemigo.setDurab(15);
+				armaEnemigo.setDmg(30);
+				armaEnemigo.setType("Blunt");
+				break;
+			}else if (seleccionarBaston==4){
+				baston.setName("Ferocious");
+				baston.setDurab(50);
+				baston.setDmg(80);
+				baston.setType("Dark");
+				baston.setDmgMod(30);
+				cout<<"Agarras el martillo, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Mace");
+				armaEnemigo.setDurab(25);
+				armaEnemigo.setDmg(45);
+				armaEnemigo.setType("Blunt");
+				break;
+			}else if (seleccionarBaston==5){
+				baston.setName("Reinforced");
+				baston.setDurab(55);
+				baston.setDmg(90);
+				baston.setType("Light");
+				baston.setDmgMod(35);
+				cout<<"Agarras el mazo, y te preparas para luchar."<<endl;
+				armaEnemigo.setName("Axe");
+				armaEnemigo.setDurab(12);
+				armaEnemigo.setDmg(35);
+				armaEnemigo.setType("Slash");
+				break;
+			}else{
+				cout<<"Opcion Invalida"<<endl;
+				seleccionarBaston=menuBaston();
+			}
+		}while(seleccionarBaston!=1&&seleccionarBaston!=2&&seleccionarBaston!=3&&seleccionarBaston!=4&&seleccionarBaston!=5);
+		int seleccionarMagia=menuMagia();
+		do{
+			if (seleccionarMagia==1){
+				magia.setSpellName("Fire");
+				magia.settypeMagic("Light");
+				magia.setBaseAtk(80);
+				cout<<"Te preparas con la magia de fuego, es hora de luchar!."<<endl;
+				break;
+			}else if (seleccionarMagia==2){
+				magia.setSpellName("Strength");
+				magia.settypeMagic("Light");
+				magia.setBaseAtk(100);
+				cout<<"Te preparas con la magia de fuerza, es hora de luchar!."<<endl;
+				break;
+			}else if (seleccionarMagia==3){
+				magia.setSpellName("Confusion");
+				magia.settypeMagic("Dark");
+				magia.setBaseAtk(40);
+				cout<<"Te preparas con la magia de confusion, es hora de luchar!."<<endl;
+				break;
+			}else if (seleccionarMagia==4){
+				magia.setSpellName("Curse");
+				magia.settypeMagic("Dark");
+				magia.setBaseAtk(70);
+				cout<<"Te preparas con la magia de maldicion, es hora de luchar!."<<endl;
+				break;
+			}else if (seleccionarMagia==5){
+				magia.setSpellName("Multiplication");
+				magia.settypeMagic("Light");
+				magia.setBaseAtk(90);
+				cout<<"Te preparas con la magia de multiplicacion, es hora de luchar!."<<endl;
+				break;
+			}else{
+				cout<<"Opcion Invalida"<<endl;
+				seleccionarMagia=menuMagia();
+			}
+		}while(seleccionarMagia!=1&&seleccionarMagia!=2&&seleccionarMagia!=3&&seleccionarMagia!=4&&seleccionarMagia!=5);
+		do{
+			ganarEXp = combateMage(Usuario2, baston, armaEnemigo, tunica,magia, antagonist);
+			if (ganarEXp){
+				Usuario2.levelUP();
+				cout << "has vencido a tu Enemigo!" << endl;
+				numEn--;
+				if (numDung == 1)
+				{
+					antagonist.setName("Esqueleto");
+					antagonist.setHP(400);
+				}else if(numDung == 2)
+				{
+					antagonist.setName("Caballero");
+					antagonist.setHP(400);
+				}else if(numDung == 3)
+				{
+					antagonist.setName("Ogro");
+					antagonist.setHP(400);
+				}
+			}else{
+				break;
+			}
+		}while (numEn > 0);
+		seguirDungeon = false;	
+	}
 }

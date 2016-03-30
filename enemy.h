@@ -14,4 +14,8 @@ class enemy:public character{
  	double atk(melee)const;
  	void defNPC(double);
  	void levelUP();
+ 	void setName(string);
+	void setForce(int);
+	void setLevel(int);
+	void setHP(double);
 };

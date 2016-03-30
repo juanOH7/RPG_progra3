@@ -9,7 +9,8 @@ using std::stringstream;
 
 enemy::enemy(string name, int power, int level, double HP):character(name, power, level,HP){}
 
-enemy::~enemy(){}
+enemy::~enemy(){
+}
 
 string enemy::toString()const{
 	stringstream ss;
@@ -24,6 +25,22 @@ double enemy::atk(melee arma)const{
 void enemy::defNPC(double AtkaDef){
 	HP -= AtkaDef;
 }
+
+void enemy::setName(string newName)
+{
+	name = newName;
+}
+void enemy::setForce(int newForce){
+	power = newForce;
+}
+void enemy::setLevel(int newLevel){
+	level = newLevel;
+}
+void enemy::setHP(double newHP)
+{
+	HP = newHP;
+}
+
 
 void enemy::levelUP(){
 	HP = (((2*90+20+(252/4))*level)/100) + level + 10;
