@@ -27,10 +27,10 @@ void warrior::def(double AtkaDef,warrArmor armadura){
 	double diff = armadura.bono() - AtkaDef;
 	if (diff < 0){
 		HP -= diff;
-		armadura.defen(0);
+		armadura.setDefen(0);
 	}
 	else{
-		armadura.defen(armadura.defen() - AtkaDef);
+		armadura.setDefen(armadura.getDefen() - AtkaDef);
 	}
 }
 

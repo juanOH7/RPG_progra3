@@ -13,42 +13,42 @@ robe::robe():armor("Naked", 1,1), atkBonu(1){}
 robe::~robe(){
 }
 
-string robe::name()const
+string robe::getName()const
 {
 	return armorName;
 }
 
-double robe::defen()const
+double robe::getDefen()const
 {
 	return defaultDef;
 }
 
-double robe::getdurab()const
+double robe::getDurab()const
 {
 	return durab;
 }
 
-double robe::bon()const
+double robe::getBon()const
 {
 	return atkBonu;
 }
 
-void robe::name(string newName)
+void robe::setName(string newName)
 {
 	armorName = newName;
 }
 
-void robe::defen(double newdef)
+void robe::setDefen(double newdef)
 {
 	defaultDef = newdef;
 }
 
-void robe::setdurab(double newdurab)
+void robe::setDurab(double newdurab)
 {
 	durab = newdurab;
 }
 
-void robe::bon(double newbon)
+void robe::setBon(double newbon)
 {
 	atkBonu = newbon;
 }

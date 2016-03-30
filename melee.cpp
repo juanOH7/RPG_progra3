@@ -15,39 +15,39 @@ melee::~melee(){
 
 //Getters
 
-string melee::name()const
+string melee::getName()const
 {
 	return weapName;
 }
 
-double melee::getdurab()const
+double melee::getDurab()const
 {
 	return durab;
 }
 
-double melee::dmg()const
+double melee::getDmg()const
 {
 	return defaultDam;
 }
 
-string melee::type()const
+string melee::getType()const
 {
 	return typeAtk;
 }
 //Setters
-void melee::name(string newname)
+void melee::setName(string newname)
 {
 	weapName = newname;
 }
-void melee::setdurab(double newdurab)
+void melee::setDurab(double newdurab)
 {
 	durab = newdurab;
 }
-void melee::dmg(double newdmg)
+void melee::setDmg(double newdmg)
 {
 	defaultDam = newdmg;
 }
-void melee::type(string newtype)
+void melee::setType(string newtype)
 {
 	typeAtk = newtype;
 }

@@ -13,13 +13,13 @@ public:
 	virtual string toString()const;
 	double atkBonus(double)const;
 	//Getters
-	string name()const;
-	double getdurab()const;
-	double dmg()const;
-	string type()const;
+	string getName()const;
+	double getDurab()const;
+	double getDmg()const;
+	string getType()const;
 	//Setters
-	void name(string);
-	void setdurab(double);
-	void dmg(double);
-	void type(string);
+	void setName(string);
+	void setDurab(double);
+	void setDmg(double);
+	void setType(string);
 };

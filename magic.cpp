@@ -16,6 +16,10 @@ string magic::toString()const
 	ss << spellName << "," << typeMagic << "," << baseAtk;
 	return ss.str();
 }
+string magic::getSpellName()const
+{
+	return spellName;
+}
 
 double magic::getBaseAtk()const
 {
@@ -25,4 +29,13 @@ double magic::getBaseAtk()const
 string magic::getTypeMagic()const
 {
 	return typeMagic;
+}
+void magic::setSpellName(string newname){
+	spellName=newname;
+}
+void magic::settypeMagic(double newtype){
+	typeMagic=newtype;
+}
+void magic::setBaseAtk(string newbase){
+	baseAtk=newbase;
 }

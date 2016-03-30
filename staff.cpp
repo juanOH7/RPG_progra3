@@ -15,49 +15,49 @@ staff::~staff(){
 
 //Getters
 
-string staff::name()const
+string staff::getName()const
 {
 	return weapName;
 }
 
-double staff::getdurab()const
+double staff::getDurab()const
 {
 	return durab;
 }
 
-double staff::dmg()const
+double staff::getDmg()const
 {
 	return defaultDam;
 }
 
-string staff::type()const
+string staff::getType()const
 {
 	return typeMagic;
 }
 
-double staff::dmgMod()const
+double staff::getDmgMod()const
 {
 	return atkModifier;
 }
 //Setters
-void staff::name(string newname)
+void staff::setName(string newname)
 {
 	weapName = newname;
 }
-void staff::setdurab(double newdurab)
+void staff::setDurab(double newdurab)
 {
 	durab = newdurab;
 }
-void staff::dmg(double newdmg)
+void staff::setDmg(double newdmg)
 {
 	defaultDam = newdmg;
 }
-void staff::type(string newtype)
+void staff::setType(string newtype)
 {
 	typeMagic = newtype;
 }
 
-void staff::dmgMod(double newMod)
+void staff::setDmgMod(double newMod)
 {
 	atkModifier = newMod;
 }

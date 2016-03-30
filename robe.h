@@ -14,13 +14,13 @@ public:
 	string toString()const;
 	double bono()const;
 	//Getters
-	string name()const;
-	double defen()const;
-	double getdurab()const;
-	double bon()const;
+	string getName()const;
+	double getDefen()const;
+	double getDurab()const;
+	double getBon()const;
 	//Setters
-	void name(string);
-	void defen(double);
-	void setdurab(double);
-	void bon(double);
+	void setName(string);
+	void setDefen(double);
+	void setDurab(double);
+	void setBon(double);
 };

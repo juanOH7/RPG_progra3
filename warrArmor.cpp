@@ -13,42 +13,42 @@ warrArmor::warrArmor():armor("Naked", 0, 0) , defBonu(0){}
 warrArmor::~warrArmor(){
 }
 
-string warrArmor::name()const
+string warrArmor::getName()const
 {
 	return armorName;
 }
 
-double warrArmor::defen()const
+double warrArmor::getDefen()const
 {
 	return defaultDef;
 }
 
-double warrArmor::getdurab()const
+double warrArmor::getDurab()const
 {
 	return durab;
 }
 
-double warrArmor::bon()const
+double warrArmor::getBon()const
 {
 	return defBonu;
 }
 
-void warrArmor::name(string newName)
+void warrArmor::setName(string newName)
 {
 	armorName = newName;
 }
 
-void warrArmor::defen(double newdef)
+void warrArmor::setDefen(double newdef)
 {
 	defaultDef = newdef;
 }
 
-void warrArmor::setdurab(double newdurab)
+void warrArmor::setDurab(double newdurab)
 {
 	durab = newdurab;
 }
 
-void warrArmor::bon(double newbon)
+void warrArmor::setBon(double newbon)
 {
 	defBonu = newbon;
 }

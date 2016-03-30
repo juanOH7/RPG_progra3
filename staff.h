@@ -15,15 +15,15 @@ public:
 	double atkBonus(double)const;
 	double atkDefault(double)const;//mago sin magia usa staff para atacar
 	//getters
-	string name()const;
-	double getdurab()const;
-	double dmg()const;
-	string type()const;
-	double dmgMod()const;
+	string getName()const;
+	double getDurab()const;
+	double getDmg()const;
+	string getType()const;
+	double getDmgMod()const;
 	//Setters
-	void name(string);
-	void setdurab(double);
-	void dmg(double);
-	void type(string);
-	void dmgMod(double);
+	void setName(string);
+	void setDurab(double);
+	void setDmg(double);
+	void setType(string);
+	void setDmgMod(double);
 };
