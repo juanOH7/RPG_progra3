@@ -33,6 +33,7 @@ int menuBaston();
 int menuMagia();
 void panteonPoder();
 void sanctoRemordimiento();
+void mostrarPersonaje(const character& personaje);
 
 int main(int argc, char const *argv[]){
 	bool terminoJUego = true;
@@ -41,9 +42,9 @@ int main(int argc, char const *argv[]){
 	int tipo=introTipo(nombre);
 	srand(time(NULL));
 	warrior guerrero(nombre,1,50,30);
-	warrior masterGuerrero("Grayson",4,90,55);
+	//warrior masterGuerrero("Grayson",4,90,55);
 	mage mago(nombre,1,15,30,60);
-	mage masterMago("Alatar",6,15,30,60);//Light o Dark
+	//mage masterMago("Alatar",6,15,30,60);//Light o Dark
 	do{
 		if (tipo==1){
 			cout<<"(Soy un guerrero, criado para matar, pupilo de Grayson. Puedo dormir ahora?) dices enojado."<<endl;
@@ -407,7 +408,7 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 				cout << "Has vencido a tu Enemigo" <<endl;
 				Usuario1.levelUP();
 				cout << "Level UP" << endl;
-				cout << Usuario1.toString() << endl;
+				mostrarPersonaje(Usuario1);
 				numEn--;
 			}else{
 				break;
@@ -576,7 +577,7 @@ void dungeon(warrior& Usuario1,mage& Usuario2,int numDung, int tipo, bool& segui
 				Usuario2.levelUP();
 				cout << "has vencido a tu Enemigo!" << endl;
 				cout << "Level UP" << endl;
-				cout << Usuario2.toString() << endl;
+				mostrarPersonaje(Usuario2);
 				numEn--;
 				if (numDung == 1)
 				{
@@ -608,4 +609,7 @@ void sanctoRemordimiento(){
 	cout<<"SANCTO DE REMORDIMIENTO"<<endl;
 	cout<<"(No quiero estar aqui...), el Sancto de Remordimiento es famoso por la leyenda de que al entrar, enfrentas a tus monstruos internos."<<endl; 
 	cout<<"Dada tu experiencia pasada en estos lugares, sabes que esos monstruos fueron colocados aqui por el Culto de Terror. Hora de pelear!"<<endl;
+}
+void mostrarPersonaje(const character& personaje){
+	cout << personaje.toString() << endl;
 }
